@@ -2,8 +2,12 @@
 #include <string>
 #include <iostream>
 
+typedef std::pair<int, float> IntFloatPair;
+
 int main()
 {
+    IntFloatPair p(42, 2.5);
+
     std::pair<std::string, int> student1("alice", 20);
     std::pair<std::string, int> student2("bob", 50);
 
