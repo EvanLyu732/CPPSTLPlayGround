@@ -4,6 +4,14 @@
 
 typedef std::pair<int, float> IntFloatPair;
 
+//cpp pair comparisons
+// namespace std {
+//     template <typename T1, typename T2>
+//     bool operator== (const pair<T1, T2>& p1, const pair<T1,T2>& y) {
+//         return x.first == y.first && x.second == y.second;
+//     }
+// }
+
 int main()
 {
     IntFloatPair p(42, 2.5);
