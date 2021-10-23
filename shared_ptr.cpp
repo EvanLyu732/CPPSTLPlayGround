@@ -16,6 +16,15 @@ void definePNicoDeleter(vector<shared_ptr<string>> shared_ptr_vec)
     shared_ptr_vec.resize(2);
 }
 
+
+void testDefault()
+{
+    std::shared_ptr<int> p(new int[10], std::default_delete<int[]>());
+    std::unique_ptr<int, void(*)(int*)> p2(new int[10], [](int* p) { delete[] p;});
+    return;
+}
+
+
 int main()
 {
     shared_ptr<string> pNico(new string("nico"));
