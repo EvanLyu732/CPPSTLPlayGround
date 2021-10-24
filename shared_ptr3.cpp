@@ -1,0 +1,38 @@
+#include <memory>
+#include <sys/mman.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <cstring>
+#include <cerrno>
+#include <string>
+#include <iostream>
+
+class SharedMemoryDetacher
+{
+    public:
+        void operator() (int* p) {
+            std::cout << "unlink / tmp1234" << std::endl;
+            if (shm_unlink("/tmp1234") != 0) { 
+                std::cerr << "OOPS: shm_unlink() failed" << std::endl;
+            }
+        }
+};
+
+std::shared_ptr<int> getSharedIntMemory (int num)
+{
+    void* mem;
+    int shmdf = shm_open("/tmp1234", O_CREAT|O_RDWR, S_IRWXU|S_IRWXG);
+    if (shmdf < 0) { 
+        throw std::string(strerror(errno));
+    }
+
+    if (ftruncate(shmfd, num*sizeof(int)) == -1) {
+        throw std::string(strerror(errno));
+    }
+
+    mem = mmap(nullptr, num*sizeof(int), PROT_READ|PROT_WRITE, 
+                MAP_SHARED, shmfd, 0);
+    if (mem == MAP_FAILED) { 
+
+    }
+}
