@@ -36,3 +36,16 @@ std::shared_ptr<int> getSharedIntMemory (int num)
 
     }
 }
+
+int main()
+{
+    std::shared_ptr<int> smp(getSharedIntMemory(100));
+
+    for (int i = 0; i < 100; ++i) {
+        smp.get()[i] = i*42;
+    }
+
+    std::cout << "<return>" << std::endl;
+    std::cin.get();
+    smp.reset();
+}
