@@ -13,3 +13,21 @@ export class Vector {
         double* elem; //elem points to sz doubles
         int sz;
 };
+
+Vector::Vector(int s):elem(new double[s]), sz{s}
+{
+
+}
+
+
+double& Vector::operator[](int i)
+{
+    return elem[i];
+}
+
+int Vector::size()
+{
+    return sz;
+}
+
+export int size(const Vector& v) {return v.size(); }
