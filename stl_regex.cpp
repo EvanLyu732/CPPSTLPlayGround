@@ -16,6 +16,17 @@ regex pat {R"(\w{2})"};
 //     }
 // }
 
+
+// regex iterator
+void test() 
+{
+    std::string input = "aa as; asd ++ "
+    regex pat {R" (\s+(\w+))"};
+    for (std::sregex_iterator p(input.begin(), input.end(), pat); p != sregex_iterator(); ++p) { 
+        std::cout << (*p)[1] << '\n';
+    }
+}
+
 int main()
 {
     // regex_match();
